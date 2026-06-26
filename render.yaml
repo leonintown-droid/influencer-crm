@@ -1,0 +1,20 @@
+# 红人营销 CRM - Render 部署配置
+
+services:
+  - type: web
+    name: influencer-crm
+    env: node
+    rootDir: server
+    buildCommand: npm install
+    startCommand: node index.js
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 10000
+      - key: SESSION_SECRET
+        generateValue: true
+    disk:
+      name: data
+      mountPath: /opt/render/project/src/server/data
+      sizeGB: 1

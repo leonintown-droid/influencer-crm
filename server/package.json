@@ -1,0 +1,19 @@
+{
+  "name": "influencer-crm-server",
+  "version": "1.0.0",
+  "description": "Influencer Marketing CRM · 10-person team backend (Feishu Base + Gmail + crawler proxy)",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "migrate": "node scripts/migrate-seed.js"
+  },
+  "dependencies": {
+    "axios": "^1.7.7",
+    "bcryptjs": "^2.4.3",
+    "dotenv": "^16.4.5",
+    "express": "^4.21.0",
+    "express-session": "^1.18.1",
+    "node-cron": "^3.0.3"
+  }
+}
