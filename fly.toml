@@ -1,0 +1,33 @@
+app = "influencer-crm"
+
+[env]
+  PORT = "8080"
+  NODE_ENV = "production"
+  SESSION_SECRET = ""  # fly launch 时会自动随机生成
+
+[[mounts]]
+  source = "data"
+  destination = "/app/server/data"
+  auto_extend_size_threshold_gb = 1
+
+[[services]]
+  protocol = "tcp"
+  internal_port = 8080
+  processes = ["app"]
+
+  [[services.checks]]
+    grace_period = "10s"
+    interval = "15s"
+    method = "get"
+    path = "/api/health"
+    timeout = "5s"
+    type = "http"
+
+  [[services.ports]]
+    port = 80
+    handlers = ["http"]
+    force_https = true
+
+  [[services.ports]]
+    port = 443
+    handlers = ["tls", "http"]
